@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Header from "./components/navigation/Header";
+import Footer from "./components/navigation/Footer";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import CoursesList from "./pages/CoursesList";
+import Course from "./pages/Course";
+import { API } from "./api/api";
+import { useEffect, useState } from "react";
+import NavBar from "./components/navigation/NavBar";
 
 function App() {
+  const [coursesData, setCoursesData] = useState([]);
+
+  useEffect(() => {
+    API.get("products").then((response) => setCoursesData(response.data.data));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App h-screen flex flex-col justify-between">
+      <Header />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage data={coursesData} />} />
+        <Route path="/courses" element={<CoursesList data={coursesData} />} />
+        <Route path="/Course/:id" element={<Course />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
