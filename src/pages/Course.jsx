@@ -9,7 +9,9 @@ const Course = () => {
   const [postData, setPostData] = useState({});
 
   useEffect(() => {
-    API.get(`products/`).then((response) => setPostData(response.data.data));
+    API.get(`products/`).then((response) =>
+      setPostData(response.data.data).catch((e) => console.log(e))
+    );
   }, []);
   return (
     <div className="">

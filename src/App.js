@@ -9,12 +9,15 @@ import Course from "./pages/Course";
 import { API } from "./api/api";
 import { useEffect, useState } from "react";
 import NavBar from "./components/navigation/NavBar";
+import FAQ from "./components/FAQ";
 
 function App() {
   const [coursesData, setCoursesData] = useState([]);
 
   useEffect(() => {
-    API.get("products").then((response) => setCoursesData(response.data.data));
+    API.get("products")
+      .then((response) => setCoursesData(response.data.data))
+      .catch((e) => console.log(e));
   }, []);
 
   return (
@@ -24,6 +27,7 @@ function App() {
         <Route path="/" element={<HomePage data={coursesData} />} />
         <Route path="/courses" element={<CoursesList data={coursesData} />} />
         <Route path="/Course/:id" element={<Course />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Footer />
     </div>
