@@ -1,39 +1,28 @@
 import { NavLink } from "react-router-dom";
 
-const links = [];
+const links = [
+  { title: "Home Page", link: "/", icon: "" },
+  { title: "Courses", link: "/courses", icon: "" },
+  { title: "FAQ", link: "/FAQ", icon: "" },
+];
 
 const NavBar = () => {
   return (
-    <div className="hidden md:block">
-      <ul className="  flex items-center justify-around text-neutral-600 lg:mx-80">
-        {links.map(({ id, link, title, icon, mobileOnly }) => {
+    <div className="block">
+      <ul className="flex items-center justify-around text-neutral-600  bg-slate-600 w-screen py-2">
+        {links.map(({ id, link, title }) => {
           return (
-            !mobileOnly && (
-              <li key={id}>
-                <NavLink href={`${link}` || "/"}>
-                  <div className=" flex  w-40 flex-col items-center justify-center">
-                    <div className="absolute top-[21px]  block">{icon}</div>
-                    <div className="flex items-center justify-between gap-2">
-                      <div className=" text-md font-semibold text-gray-200">
-                        {links[title]}
-                      </div>
+            <li key={id}>
+              <NavLink to={`${link}` || "/"}>
+                <div className=" flex  w-40 flex-col items-center justify-center">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className=" text-md font-semibold text-gray-200">
+                      {title}
                     </div>
                   </div>
-                  {/* {isSubMenu === link && (
-                  <div
-                    className="items-top absolute flex h-[300px] w-40   justify-center rounded-b-md bg-primary-color"
-                    onClick={() => {}}
-                  >
-                    <ChevronDown
-                      strokeWidth="3px"
-                      size="20px"
-                      color="var(--button-primary-color)"
-                    />
-                  </div>
-                )} */}
-                </NavLink>
-              </li>
-            )
+                </div>
+              </NavLink>
+            </li>
           );
         })}
       </ul>

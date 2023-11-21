@@ -20,7 +20,6 @@ function App() {
   return (
     <div className="App h-screen flex flex-col justify-between">
       <Header />
-      <NavBar />
       <Routes>
         <Route path="/" element={<HomePage data={coursesData} />} />
         <Route path="/courses" element={<CoursesList data={coursesData} />} />
