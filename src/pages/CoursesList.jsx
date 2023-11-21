@@ -6,8 +6,11 @@ const CoursesList = ({ data }) => {
   return (
     <div>
       {data.map((post) => (
-        <NavLink to={`${process.env.REACT_PUBLIC_API_URL}/products/${post.id}`}>
-          <PostCard key={post.id} post={post} />
+        <NavLink
+          key={post.id}
+          to={`${process.env.REACT_PUBLIC_API_URL}/products/${post.id}`}
+        >
+          <PostCard post={post} />
         </NavLink>
       ))}
     </div>
