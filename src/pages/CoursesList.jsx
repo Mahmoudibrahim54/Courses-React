@@ -4,7 +4,7 @@ import PostCard from "../components/posts/PostCard";
 const CoursesList = ({ data }) => {
   console.log(data);
   return (
-    <div>
+    <div className="flex flex-col justify-around h-full">
       {data.map((post) => (
         <NavLink
           key={post.id}

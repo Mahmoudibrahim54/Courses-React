@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="text-sm">
             <NavLink
               className="underline underline-offset-4"
-              href="https://www.linkedin.com/in/mahmoud-m-ibrahim/"
+              to="https://www.linkedin.com/in/mahmoud-m-ibrahim/"
             >
               Mahmoud Ibrahim
             </NavLink>

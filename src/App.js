@@ -8,7 +8,6 @@ import CoursesList from "./pages/CoursesList";
 import Course from "./pages/Course";
 import { API } from "./api/api";
 import { useEffect, useState } from "react";
-import NavBar from "./components/navigation/NavBar";
 import FAQ from "./components/FAQ";
 
 function App() {
@@ -16,7 +15,9 @@ function App() {
 
   useEffect(() => {
     API.get("products")
-      .then((response) => setCoursesData(response.data.data))
+      .then((response) => {
+        setCoursesData(response.data.data);
+      })
       .catch((e) => console.log(e));
   }, []);
 

@@ -3,9 +3,9 @@ import CoursesList from "./CoursesList";
 
 const HomePage = ({ data }) => {
   return (
-    <div>
+    <div className="w-screen h-full">
       <PostCard post={data[0]} layout="horizontal" />
-      <CoursesList data={data.slice(1)} />
+      <CoursesList data={data?.slice(1)} />
     </div>
   );
 };
